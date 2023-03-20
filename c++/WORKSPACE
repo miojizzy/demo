@@ -1,0 +1,40 @@
+workspace(name = "demo")
+
+
+# support grpc
+local_repository(
+    name = "com_github_grpc_grpc",
+    path = "/grpc/"
+)
+load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
+grpc_deps()
+load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
+grpc_extra_deps()
+
+# support gtest
+local_repository(
+    name = "com_github_grpc_gtest",
+    path = "/grpc/third_party/googletest/"
+)
+
+# support absl
+local_repository(
+    name = "absl",
+    path = "/grpc/third_party/abseil-cpp/"
+)
+
+
+local_repository(
+    name = "common",
+    path = "common"
+)
+
+local_repository(
+    name = "examples",
+    path = "examples"
+)
+
+local_repository(
+    name = "test",
+    path = "test"
+)
