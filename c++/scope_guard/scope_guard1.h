@@ -5,6 +5,7 @@
 #include <tuple>
 #include <type_traits>
 
+namespace sg1 {
 
 template <typename Fn,
           typename = std::enable_if_t<std::is_same_v<void, decltype(std::declval<Fn>()())>>
@@ -59,3 +60,5 @@ decltype(auto) makeScopeGuard(Fn&& fn) {
     // std::decay_t确保fn不是ref，避免fn为lvalue时，在外部被意外修改
     return ScopeGuard<std::decay_t<Fn>>(std::forward<std::decay_t<Fn>>(fn));
 }
+
+} //namespace sg1
